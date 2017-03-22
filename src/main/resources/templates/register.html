@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    </meta>
+    <title>Registration</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous"></link>
+</head>
+<body>
+<div class="container">
+    <form class="form-horizontal" action="#" th:action="@{/registration}" th:object="${userForm}" method="post">
+        <fieldset>
+            <div id="legend">
+                <legend class="">Registration</legend>
+            </div>
+            <div class="control-group">
+                <!-- Username -->
+                <label class="control-label" for="username">Username</label>
+                <div class="controls">
+                    <input type="text" th:field="*{username}" class="input-xlarge"/>
+                    <p class="alert alert-danger" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Name
+                        Error </p>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <!-- E-mail -->
+                <label class="control-label" for="password">Password</label>
+                <div class="controls">
+                    <input type="password" th:field="*{password}" class="input-xlarge"/>
+                    <p class="alert alert-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">
+                        Password Error </p>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <!-- Password-->
+                <label class="control-label" for="password">Password Confirm</label>
+                <div class="controls">
+                    <input type="password" th:field="*{passwordConfirm}" class="input-xlarge"/>
+                    <p class="alert alert-danger" th:if="${#fields.hasErrors('passwordConfirm')}"
+                       th:errors="*{passwordConfirm}">Name Error </p>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <!-- Password -->
+                <label class="control-label" for="password_confirm">Email</label>
+                <div class="controls">
+                    <input type="text" th:field="*{email}" class="input-xlarge"/>
+                    <p class="alert alert-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Name
+                        Error </p>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <!-- Button -->
+                <div class="controls">
+                    <button class="btn btn-success">Register</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+
+</div>
+</body>
+</html>
