@@ -62,4 +62,9 @@ public class ProductServiceImpl implements ProductService {
     public List<Product> getAllProducts(Sort sort) {
         return productRepository.findAll(sort);
     }
+
+    @Override
+    public void updateProduct(Product product) {
+        productRepository.save(product);
+    }
 }

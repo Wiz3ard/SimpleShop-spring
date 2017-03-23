@@ -21,4 +21,7 @@ public interface ProductService {
     List<Product> getAllProducts();
 
     List<Product> getAllProducts(Sort sort);
+
+    void updateProduct(Product product);
 }
+

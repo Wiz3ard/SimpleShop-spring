@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -63,5 +64,30 @@ public class AdminController {
 
         return "redirect:/admin/product";
 
+    }
+
+    @RequestMapping(value = "admin/product/edit/{pid}")
+    public String editProduct(@PathVariable(value = "pid") Integer pid, Model model) {
+
+        model.addAttribute("product", productService.findById(pid.longValue()));
+        model.addAttribute("categories", categoryService.getAllCategories());
+        return "admin/product_edit";
+    }
+
+    @RequestMapping(value = "admin/product/edit/{pid}", method = RequestMethod.POST)
+    public String editProductPost(@ModelAttribute("product") Product product, @PathVariable("pid") Integer pid, Model model, BindingResult bindingResult) {
+
+        product.setId(pid.longValue());
+
+        validator.validate(product, bindingResult);
+
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("cateogires", categoryService.getAllCategories());
+            return "admin/product_edit";
+        }
+
+        productService.updateProduct(product);
+
+        return "redirect:/admin/product";
     }
 }
