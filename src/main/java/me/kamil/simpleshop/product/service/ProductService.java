@@ -4,6 +4,7 @@ import java.util.List;
 
 import me.kamil.simpleshop.product.domain.Category;
 import me.kamil.simpleshop.product.domain.Product;
+import org.springframework.data.domain.Sort;
 
 public interface ProductService {
 
@@ -18,4 +19,6 @@ public interface ProductService {
     List<Product> getProductsByCategoryAsc(Category category);
 
     List<Product> getAllProducts();
+
+    List<Product> getAllProducts(Sort sort);
 }

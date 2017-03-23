@@ -57,4 +57,9 @@ public class ProductServiceImpl implements ProductService {
     public List<Product> getAllProducts() {
         return productRepository.findAll(new Sort(Sort.Direction.ASC, "name"));
     }
+
+    @Override
+    public List<Product> getAllProducts(Sort sort) {
+        return productRepository.findAll(sort);
+    }
 }
