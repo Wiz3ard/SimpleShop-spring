@@ -23,5 +23,7 @@ public interface ProductService {
     List<Product> getAllProducts(Sort sort);
 
     void updateProduct(Product product);
+
+    void deleteProduct(Product product);
 }
 

@@ -18,8 +18,6 @@ public class HomeController {
     @RequestMapping(value = {"/", "/home"})
     public String home(Model model) {
 
-        model.addAttribute("categories", categoryService.getAllCategories());
-
         return "home";
     }
 }

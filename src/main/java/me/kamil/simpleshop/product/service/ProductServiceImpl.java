@@ -47,7 +47,6 @@ public class ProductServiceImpl implements ProductService {
         productRepository.save(product);
     }
 
-    // Get product from category sorted by name ascending
     @Override
     public List<Product> getProductsByCategoryAsc(Category category) {
         return productRepository.findByCategoryOrderByNameAsc(category);
@@ -66,5 +65,10 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public void updateProduct(Product product) {
         productRepository.save(product);
+    }
+
+    @Override
+    public void deleteProduct(Product product) {
+        productRepository.delete(product);
     }
 }
