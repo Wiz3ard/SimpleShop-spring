@@ -19,15 +19,10 @@ public class CategoryController {
     @RequestMapping(value = "/category/{id}")
     public String category(Model model, @PathVariable(value = "id") Integer id) {
 
+        Category category = categoryService.findById(id.longValue());
 
-        Optional<Category> opt = Optional.ofNullable(categoryService.findById(id.longValue()));
-
-
-        if (!opt.isPresent()) {
+        if (category == null)
             return "home";
-        }
-
-        Category category = categoryService.findById(new Long(id));
 
         model.addAttribute("products", categoryService.getAllProducts(category));
 
