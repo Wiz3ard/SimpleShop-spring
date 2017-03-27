@@ -8,6 +8,7 @@ import me.kamil.simpleshop.product.domain.Category;
 import me.kamil.simpleshop.product.domain.Product;
 
 public interface ProductRepository extends JpaRepository<Product, Long> {
+
     Product findByName(String name);
 
     List<Product> findByCategoryOrderByNameAsc(Category category);

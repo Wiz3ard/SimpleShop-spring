@@ -4,7 +4,6 @@
     <meta charset="UTF-8"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
-    <link rel="stylesheet" href="http://getbootstrap.com.vn/examples/equal-height-columns/equal-height-columns.css"/>
 
 </head>
 
@@ -12,29 +11,36 @@
 <div class="container">
     <div th:include="share/header :: header"> ...</div>
 
-    <div class="row  row-eq-height" style="background-color: red">
-        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 text-center" style="padding-bottom:10px;">
-            <ul class="nav nav-pills nav-stacked" th:each="c : ${categories}">
-                <li><a th:href="@{'/category/' + ${c.id}}" th:text="${c.getName()}">.</a></li>
-            </ul>
-        </div>
-        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 jumbotron" th:each="p : ${products}" style="padding-top: 10px;">
-            <div><a th:href="@{'/product/' + ${p.getId()}}" th:text="${p.getName()}" style="padding-top: 10px;"></a>
-            </div>
-            <div>-----------</div>
-            <!-- 	<div th:text="${p.getDescription()}">  </div> -->
-            <div th:text="${p.getPrice() + '$'}" style="padding-top: 10px; padding-bottom:15px;"></div>
-            <div>
-                <form th:action="@{/addToCard}" method="get">
-                    <label>Amount:</label><input class="form-control input-sm" type="text" id="ammontValue"
-                                                 name="ammountValue" value="1"/>
-                    <input type="text" th:value="${p.getId()}" id="pid" name="pid" hidden="true"/>
-                    <input type="submit" value="Add to card"/>
-                </form>
-            </div>
+    <div class="row">
+
+        <div th:include="share/category_menu :: c_menu">...</div>
+
+        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+            <th:block th:with="partitions=${T(org.apache.commons.collections4.ListUtils).partition(products, 5)}">
+                <div class="row equal" th:each="partition: ${partitions}">>
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 " th:each="p : ${partition}"
+                         style="padding-top: 10px; background-color">
+                        <div><a th:href="@{'/product/' + ${p.getId()}}" th:text="${p.getName()}"
+                                style="padding-top: 10px;"></a>
+                        </div>
+                        <div>-----------</div>
+                        <!-- 	<div th:text="${p.getDescription()}">  </div> -->
+                        <div th:text="${p.getPrice() + '$'}" style="padding-top: 10px; padding-bottom:15px;"></div>
+                        <div>
+                            <form th:action="@{/addToCart}" method="get">
+                                <label>Amount:</label><input class="form-control input-sm" type="text" id="ammontValue"
+                                                             name="amountValue" value="1"/>
+                                <input type="text" th:value="${p.getId()}" id="pid" name="pid" hidden="true"/>
+                                <input type="submit" value="Add to cart" class="btn btn-info" role="button"
+                                       style="margin-top:5px;"/>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </th:block>
 
         </div>
-
     </div>
 </div>
 

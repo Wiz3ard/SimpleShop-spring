@@ -11,14 +11,7 @@
     <div th:include="share/header :: header"> ...</div>
 
     <div class="row">
-        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-            <span class="label label-info">Categories:</span>
-            <ul class="nav nav-pills nav-stacked" th:each="category : ${categories}">
-                <li role="presentation"><a th:href="@{'/category/' + ${category.id}}"
-                                           th:text="${category.getName()}">.</a></li>
-            </ul>
-        </div>
-
+        <div th:include="share/category_menu :: c_menu">...</div>
         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
             HOME PAGE THERE :)
         </div>

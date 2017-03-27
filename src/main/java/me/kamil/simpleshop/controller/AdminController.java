@@ -1,5 +1,6 @@
 package me.kamil.simpleshop.controller;
 
+import ch.qos.logback.core.net.SyslogOutputStream;
 import me.kamil.simpleshop.product.domain.Product;
 import me.kamil.simpleshop.product.service.CategoryService;
 import me.kamil.simpleshop.product.service.ProductService;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.Collection;
 import java.util.Optional;
 
 @Controller
@@ -91,12 +93,10 @@ public class AdminController {
     @RequestMapping(value = "admin/product/delete/{pid}", method = RequestMethod.GET)
     public String deleteProduct(@PathVariable Integer pid) {
 
+        Product p = productService.findById(pid.longValue());
+        if (p == null) return "redirect:/admin/product";
 
-        Optional<Product> opt = Optional.ofNullable(productService.findById(pid.longValue()));
-
-        if (opt.isPresent()) {
-            opt.ifPresent(productService::deleteProduct);
-        }
+        productService.deleteProduct(p);
 
         return "redirect:/admin/product";
     }

@@ -17,7 +17,7 @@
             <div sec:authorize="isAuthenticated()">
                 <ul class="nav navbar-nav navbar-right">
                     <li sec:authorize="hasAuthority('ROLE_ADMIN')"><a href="/admin/"> Admin panel </a></li>
-                    <li><a href="#">Shop Card</a></li>
+                    <li><a href="/cart">Shop Card</a></li>
                     <li><a href="/logout">Logout</a></li>
                 </ul>
             </div>
