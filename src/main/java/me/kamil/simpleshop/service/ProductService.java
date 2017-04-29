@@ -1,9 +1,9 @@
-package me.kamil.simpleshop.product.service;
+package me.kamil.simpleshop.service;
 
 import java.util.List;
 
-import me.kamil.simpleshop.product.domain.Category;
-import me.kamil.simpleshop.product.domain.Product;
+import me.kamil.simpleshop.domain.Category;
+import me.kamil.simpleshop.domain.Product;
 import org.springframework.data.domain.Sort;
 
 public interface ProductService {

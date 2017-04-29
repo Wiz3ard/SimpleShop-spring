@@ -1,4 +1,4 @@
-package me.kamil.simpleshop.product.domain;
+package me.kamil.simpleshop.domain;
 
 import java.util.Set;
 

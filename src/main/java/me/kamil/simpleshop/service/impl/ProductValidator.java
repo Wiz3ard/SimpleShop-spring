@@ -1,11 +1,11 @@
-package me.kamil.simpleshop.product.service;
+package me.kamil.simpleshop.service.impl;
 
 import org.springframework.stereotype.Service;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
-import me.kamil.simpleshop.product.domain.Product;
+import me.kamil.simpleshop.domain.Product;
 
 @Service
 public class ProductValidator implements Validator {

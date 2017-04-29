@@ -1,5 +1,6 @@
-package me.kamil.simpleshop.auth.service;
+package me.kamil.simpleshop.auth.service.impl;
 
+import me.kamil.simpleshop.auth.service.SecurityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

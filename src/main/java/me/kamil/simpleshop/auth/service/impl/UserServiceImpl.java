@@ -1,8 +1,9 @@
-package me.kamil.simpleshop.auth.service;
+package me.kamil.simpleshop.auth.service.impl;
 
 import java.util.HashSet;
 import java.util.Set;
 
+import me.kamil.simpleshop.auth.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;

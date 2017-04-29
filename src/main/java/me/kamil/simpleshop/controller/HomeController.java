@@ -6,7 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import me.kamil.simpleshop.product.service.CategoryService;
+import me.kamil.simpleshop.service.CategoryService;
 
 
 @Controller

@@ -1,7 +1,7 @@
 package me.kamil.simpleshop.controller;
 
 import me.kamil.simpleshop.auth.domain.User;
-import me.kamil.simpleshop.auth.service.RegisterValidator;
+import me.kamil.simpleshop.auth.service.impl.RegisterValidator;
 import me.kamil.simpleshop.auth.service.SecurityService;
 import me.kamil.simpleshop.auth.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

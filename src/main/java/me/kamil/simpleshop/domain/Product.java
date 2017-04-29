@@ -1,10 +1,7 @@
-package me.kamil.simpleshop.product.domain;
+package me.kamil.simpleshop.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Product {
@@ -15,9 +12,13 @@ public class Product {
     private String name;
     private String description;
     private double price;
+
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
+
+    @OneToMany(mappedBy = "product")
+    private List<CartProduct> cartProducts;
 
     public Long getId() {
         return id;

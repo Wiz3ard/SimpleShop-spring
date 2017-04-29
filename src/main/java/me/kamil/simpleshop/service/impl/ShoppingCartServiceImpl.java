@@ -1,15 +1,14 @@
-package me.kamil.simpleshop.product.service;
+package me.kamil.simpleshop.service.impl;
 
-import me.kamil.simpleshop.product.domain.CartProduct;
-import me.kamil.simpleshop.product.domain.ShoppingCart;
+import me.kamil.simpleshop.domain.CartProduct;
+import me.kamil.simpleshop.domain.ShoppingCart;
+import me.kamil.simpleshop.service.ShoppingCartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpSession;
 
-/**
- * Created by Kamil on 2017-03-26.
- */
+
 @Service
 public class ShoppingCartServiceImpl implements ShoppingCartService {
 

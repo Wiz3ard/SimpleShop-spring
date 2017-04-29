@@ -1,10 +1,9 @@
 package me.kamil.simpleshop.controller;
 
-import ch.qos.logback.core.net.SyslogOutputStream;
-import me.kamil.simpleshop.product.domain.Product;
-import me.kamil.simpleshop.product.service.CategoryService;
-import me.kamil.simpleshop.product.service.ProductService;
-import me.kamil.simpleshop.product.service.ProductValidator;
+import me.kamil.simpleshop.domain.Product;
+import me.kamil.simpleshop.service.CategoryService;
+import me.kamil.simpleshop.service.ProductService;
+import me.kamil.simpleshop.service.impl.ProductValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
@@ -14,9 +13,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
-import java.util.Collection;
-import java.util.Optional;
 
 @Controller
 public class AdminController {
@@ -29,6 +25,7 @@ public class AdminController {
 
     @Autowired
     private ProductValidator validator;
+
 
     @RequestMapping(value = "/admin")
     public String admin() {
@@ -95,6 +92,7 @@ public class AdminController {
 
         Product p = productService.findById(pid.longValue());
         if (p == null) return "redirect:/admin/product";
+
 
         productService.deleteProduct(p);
 

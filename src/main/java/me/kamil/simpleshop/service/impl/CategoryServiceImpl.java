@@ -1,15 +1,15 @@
-package me.kamil.simpleshop.product.service;
+package me.kamil.simpleshop.service.impl;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
+import me.kamil.simpleshop.service.CategoryService;
+import me.kamil.simpleshop.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import me.kamil.simpleshop.product.domain.Category;
-import me.kamil.simpleshop.product.domain.Product;
-import me.kamil.simpleshop.product.repository.CategoryRepository;
+import me.kamil.simpleshop.domain.Category;
+import me.kamil.simpleshop.domain.Product;
+import me.kamil.simpleshop.domain.repository.CategoryRepository;
 
 @Service
 public class CategoryServiceImpl implements CategoryService {
@@ -22,7 +22,6 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public Category findById(Long id) {
-
         return categoryRepository.findOne(id);
     }
 
