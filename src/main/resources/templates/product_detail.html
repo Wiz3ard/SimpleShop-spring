@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+
+</head>
+
+<body>
+<div class="container">
+    <div class="row">
+        <div th:include="share/header :: header"> ...</div>
+        <div th:include="share/category_menu :: c_menu">...</div>
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            <div><label>Name: </label>
+                <p th:text="${product.getName()}"></p></div>
+            <div><label>Price: </label>
+                <p th:text="${product.getPrice()}"></p></div>
+            <div><label>Description: </label>
+                <p th:text="${product.getDescription()}"></p></div>
+            <div><a th:href="@{'/addToCart/' + ${product.getId()}}" class="btn btn-info" role="button">Add to cart</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+
+</html>

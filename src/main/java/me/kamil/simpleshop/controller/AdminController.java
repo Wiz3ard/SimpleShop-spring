@@ -87,14 +87,14 @@ public class AdminController {
         return "redirect:/admin/product";
     }
 
-    @RequestMapping(value = "admin/product/delete/{pid}", method = RequestMethod.GET)
+    @RequestMapping(value = "admin/product/available/{pid}", method = RequestMethod.GET)
     public String deleteProduct(@PathVariable Integer pid) {
 
         Product p = productService.findById(pid.longValue());
         if (p == null) return "redirect:/admin/product";
 
 
-        productService.deleteProduct(p);
+        productService.setProductAvailable(p);
 
         return "redirect:/admin/product";
     }

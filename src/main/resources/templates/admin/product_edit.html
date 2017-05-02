@@ -59,6 +59,18 @@
                     </div>
 
                     <div class="control-group">
+
+                        <label class="control-label" for="amount">Amount</label>
+                        <div class="controls">
+                            <input type="text" th:field="*{amount}" th:value="${product.getAmount()}"
+                                   class="input-xlarge"/>
+                            <p class="alert alert-danger" th:if="${#fields.hasErrors('amount')}"
+                               th:errors="*{amount}">Amount Error </p>
+                        </div>
+
+                    </div>
+
+                    <div class="control-group">
                         <!-- Button -->
                         <div class="controls">
                             <button class="btn btn-success">Edit PRODUCT</button>

@@ -71,6 +71,24 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public void setProductAvailable(Product product) {
+        if (product.isAvailable()) product.setAvailable(false);
+        else product.setAvailable(true);
+
+        productRepository.save(product);
+    }
+
+    @Override
+    public void decreseProductAmount(Product product, int amount) {
+        if (product == null) return;
+        if (product.getAmount() < amount) return;
+        int finalAmount = product.getAmount() - amount;
+        product.setAmount(finalAmount);
+
+        productRepository.save(product);
+    }
+
+    @Override
     public void deleteProduct(Product product) {
         cartProductService.deleteAllCartProduct(product);
         productRepository.delete(product);

@@ -36,6 +36,9 @@ public class ProductValidator implements Validator {
         if (product.getPrice() < 0) {
             error.rejectValue("price", "Product.priceLowerThanZero");
         }
+        if (product.getAmount() < 0) {
+            error.rejectValue("amount", "Product.wrongAmount");
+        }
 
         //Category Validation
         ValidationUtils.rejectIfEmptyOrWhitespace(error, "category", "Product.wrongCategory");

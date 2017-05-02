@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+
+</head>
+<body>
+<div class="container">
+    <div th:include="share/header :: header"> ...</div>
+    <div class="row">
+        <div th:include="share/category_menu :: c_menu"></div>
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 ">
+            <div class="row">
+                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                    <p>Product name:</p>
+                </div>
+                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                    <p>Amount:</p>
+                </div>
+                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                    <p>Price (total):</p>
+                </div>
+            </div>
+            <div class="row" th:each="p : ${cart.getProductList()}" style="margin-top:15px;">
+                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                    <p th:text="${p.getProduct().getName()}"/>
+                </div>
+                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                    <p th:text="${p.getAmount()}"/>
+                </div>
+                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                    <p th:text="${p.getAmountPrice() + '$'}"/>
+                </div>
+                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                    <div class="col-xs-6 col-sm-6 col-lg-6">
+                        <a href="/" type="submit" class="btn btn-info" role="button">DELETE</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-top:15px;" th:if="${cart.getProductList().size()} > 0">
+                <div class="col-xs-6 col-sm-6 col-lg-6">
+                    <a href="/order" type="submit" class="btn btn-info" role="button">ORDER</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

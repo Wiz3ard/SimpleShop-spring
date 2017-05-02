@@ -30,7 +30,7 @@
                     <label> PRICE: </label>
                 </div>
                 <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
-                    <label> ACTION: </label>
+                    <label>AVAILABLE:</label>
                 </div>
             </div>
 
@@ -42,9 +42,11 @@
                 </div>
                 <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" th:text="${p.getPrice()}">
                 </div>
+                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" th:text="${p.isAvailable()}">
+                </div>
                 <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
                     <a th:href="@{'/admin/product/edit/'+${p.getId()}}">EDIT</a>
-                    <a th:href="@{'/admin/product/delete/'+${p.getId()}}">DELETE</a>
+                    <a th:href="@{'/admin/product/available/'+${p.getId()}}">SET AVAILABLE</a>
                 </div>
 
             </div>

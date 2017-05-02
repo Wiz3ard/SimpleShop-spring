@@ -41,7 +41,14 @@
                                 Price Error </p>
                         </div>
                     </div>
-
+                    <div class="control-group">
+                        <label class="control-label" for="amount">Amount</label>
+                        <div class="controls">
+                            <input type="text" th:field="*{amount}" class="input-xlarge"/>
+                            <p class="alert alert-danger" th:if="${#fields.hasErrors('amount')}"
+                               th:errors="*{amount}">Amount Error </p>
+                        </div>
+                    </div>
                     <div class="control-group">
                         <label class="control-label" for="category">Category</label>
                         <div class="controls">

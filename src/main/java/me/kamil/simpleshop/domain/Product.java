@@ -1,5 +1,7 @@
 package me.kamil.simpleshop.domain;
 
+import org.hibernate.annotations.ColumnDefault;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -12,7 +14,8 @@ public class Product {
     private String name;
     private String description;
     private double price;
-
+    private int amount;
+    private boolean available = true;
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
@@ -60,4 +63,19 @@ public class Product {
         this.price = price;
     }
 
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
+    public boolean isAvailable() {
+        return available;
+    }
+
+    public void setAvailable(boolean available) {
+        this.available = available;
+    }
 }

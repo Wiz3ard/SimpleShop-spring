@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+
+</head>
+<body>
+<div class="container">
+    <div th:include="share/header :: header"> ...</div>
+    <div class="row">
+        <div th:include="share/category_menu :: c_menu"></div>
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 ">
+            <div class="row">
+                <form class="form-horizontal" action="#" th:action="@{/order}" th:object="${orderForm}" method="post">
+                    <fieldset>
+                        <legend>Order delivery adress</legend>
+
+                        <div class="control-group">
+                            <label class="control-label">First Name</label>
+                            <div class="controls">
+                                <input type="text" th:field="*{firstName}"/>
+                                <p class="alert alert-danger" th:if="${#fields.hasErrors('firstName')}"
+                                   th:errors="*{firstName}"> First Name
+                                    Error </p>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">Last Name</label>
+                            <div class="controls">
+                                <input type="text" th:field="*{lastName}"/>
+                                <p class="alert alert-danger" th:if="${#fields.hasErrors('lastName')}"
+                                   th:errors="*{lastName}"> Last
+                                    Error </p>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">City</label>
+                            <div class="controls">
+                                <input type="text" th:field="*{city}"/>
+                                <p class="alert alert-danger" th:if="${#fields.hasErrors('city')}" th:errors="*{city}">
+                                    City
+                                    Error </p>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">Postal Code</label>
+                            <div class="controls">
+                                <input type="text" th:field="*{postalCode}"/>
+                                <p class="alert alert-danger" th:if="${#fields.hasErrors('postalCode')}"
+                                   th:errors="*{postalCode}"> Postal Code
+                                    Error </p>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">Delivery Adress</label>
+                            <div class="controls">
+                                <input type="text" th:field="*{deliveryAdress}"/>
+                                <p class="alert alert-danger" th:if="${#fields.hasErrors('deliveryAdress')}"
+                                   th:errors="*{deliveryAdress}"> Delivery Adress
+                                    Error </p>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">Phone Number</label>
+                            <div class="controls">
+                                <input type="text" th:field="*{phoneNumber}"/>
+                                <p class="alert alert-danger" th:if="${#fields.hasErrors('phoneNumber')}"
+                                   th:errors="*{phoneNumber}"> Phone number
+                                    Error </p>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <!-- Button -->
+                            <div class="controls">
+                                <button class="btn btn-success">ORDER!</button>
+                            </div>
+                        </div>
+
+
+                    </fieldset>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

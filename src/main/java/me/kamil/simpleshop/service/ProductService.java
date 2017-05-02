@@ -25,5 +25,9 @@ public interface ProductService {
     void updateProduct(Product product);
 
     void deleteProduct(Product product);
+
+    void setProductAvailable(Product product);
+
+    void decreseProductAmount(Product product, int amount);
 }
 

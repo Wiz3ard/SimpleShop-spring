@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
 
 
@@ -51,7 +52,7 @@ public class ProductController {
     }
 
     @RequestMapping(value = "/addToCart")
-    public String addToCart(@ModelAttribute(value = "amountValue") Integer amount, @ModelAttribute("pid") Integer pid) {
+    public String addToCart(@ModelAttribute(value = "amountValue") Integer amount, @ModelAttribute("pid") Integer pid, HttpServletRequest request) {
 
         CartProduct cartProduct = new CartProduct();
         Product product = productService.findById(pid.longValue());
@@ -64,6 +65,9 @@ public class ProductController {
         else
             cartProduct.setAmount(amount);
 
+        if (product.getAmount() < cartProduct.getAmount()) {
+            return "redirect:" + request.getHeader("Referer");
+        }
         cartProduct.setProduct(product);
         shoppingCartService.addToCart(cartProduct);
 

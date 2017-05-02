@@ -14,17 +14,16 @@
     <div class="row">
 
         <div th:include="share/category_menu :: c_menu">...</div>
-
         <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
             <th:block th:with="partitions=${T(org.apache.commons.collections4.ListUtils).partition(products, 5)}">
                 <div class="row equal" th:each="partition: ${partitions}">>
                     <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 " th:each="p : ${partition}"
-                         style="padding-top: 10px; background-color">
+                         style="padding-top: 10px; background-color" th:if="${p.isAvailable() and p.getAmount() > 0}">
                         <div><a th:href="@{'/product/' + ${p.getId()}}" th:text="${p.getName()}"
                                 style="padding-top: 10px;"></a>
                         </div>
                         <div>-----------</div>
-                        <!-- 	<div th:text="${p.getDescription()}">  </div> -->
+                        <!-- 	<div th:text="${p.getDescription ()}">  </div> -->
                         <div th:text="${p.getPrice() + '$'}" style="padding-top: 10px; padding-bottom:15px;"></div>
                         <div>
                             <form th:action="@{/addToCart}" method="get">
