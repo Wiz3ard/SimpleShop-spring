@@ -29,6 +29,9 @@
                 <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
                     <label> PRICE: </label>
                 </div>
+                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                    <label> AMOUNT: </label>
+                </div>
                 <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
                     <label>AVAILABLE:</label>
                 </div>
@@ -40,7 +43,9 @@
                 </div>
                 <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" th:text="${p.getName()}">
                 </div>
-                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" th:text="${p.getPrice()}">
+                <div class="col-xs-1 col-sm-1 col-md-2 col-lg-2" th:text="${p.getPrice()}">
+                </div>
+                <div class="col-xs-1 col-sm-1 col-md-2 col-lg-2" th:text="${p.getAmount()}">
                 </div>
                 <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" th:text="${p.isAvailable()}">
                 </div>

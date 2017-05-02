@@ -99,5 +99,9 @@ public class AdminController {
         return "redirect:/admin/product";
     }
 
+    @RequestMapping(value = "admin/category", method = RequestMethod.GET)
+    public String category() {
+        return "admin/category";
+    }
 
 }
