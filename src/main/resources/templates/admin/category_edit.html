@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+</head>
+<body>
+<div class="container">
+    <div th:include="share/header :: header"> ...</div>
+
+    <div class="row">
+        <div th:include="admin/admin-menu :: admin-menu">...</div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            <form class="form-horizontal" th:action="@{'/admin/category/edit/' + ${category.getId()}}"
+                  th:object="${category}"
+                  method="post">
+                <fieldset>
+
+                    <div id="legend">
+                        <legend class="">Edit Cateogry</legend>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="name">Category Name</label>
+                        <div class="controls">
+                            <input type="text" th:value="${category.getName()}" th:field="*{name}"
+                                   class="input-xlarge"/>
+                            <p class="alert alert-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name
+                                Error </p>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <!-- Button -->
+                        <div class="controls">
+                            <button class="btn btn-success">Edit Cateogry</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
