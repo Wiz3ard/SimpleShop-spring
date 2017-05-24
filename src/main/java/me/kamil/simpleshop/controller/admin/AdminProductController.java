@@ -1,7 +1,6 @@
-package me.kamil.simpleshop.controller;
+package me.kamil.simpleshop.controller.admin;
 
 import me.kamil.simpleshop.domain.Product;
-import me.kamil.simpleshop.service.CategoryService;
 import me.kamil.simpleshop.service.ProductService;
 import me.kamil.simpleshop.service.impl.ProductValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,24 +13,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+/**
+ * Created by Kamil on 2017-05-24.
+ */
 @Controller
-public class AdminController {
-
-    @Autowired
-    private CategoryService categoryService;
+public class AdminProductController {
 
     @Autowired
     private ProductService productService;
 
     @Autowired
     private ProductValidator validator;
-
-
-    @RequestMapping(value = "/admin")
-    public String admin() {
-
-        return "admin/admin";
-    }
 
     @RequestMapping(value = "admin/product")
     public String product(Model model) {
@@ -61,7 +53,6 @@ public class AdminController {
         productService.addProduct(product);
 
         return "redirect:/admin/product";
-
     }
 
     @RequestMapping(value = "admin/product/edit/{pid}")
@@ -98,10 +89,4 @@ public class AdminController {
 
         return "redirect:/admin/product";
     }
-
-    @RequestMapping(value = "admin/category", method = RequestMethod.GET)
-    public String category() {
-        return "admin/category";
-    }
-
 }
