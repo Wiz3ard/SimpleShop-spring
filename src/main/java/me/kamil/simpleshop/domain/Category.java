@@ -19,6 +19,9 @@ public class Category {
     @OneToMany(mappedBy = "category", fetch = FetchType.EAGER)
     private Set<Product> products;
 
+    private boolean active = true;
+
+
     public Category() {
     }
 
@@ -28,6 +31,10 @@ public class Category {
 
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -46,4 +53,11 @@ public class Category {
         this.products = products;
     }
 
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
 }
