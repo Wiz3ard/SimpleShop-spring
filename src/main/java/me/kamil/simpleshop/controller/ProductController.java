@@ -83,29 +83,6 @@ public class ProductController {
 
     }
 
-    @RequestMapping(value = "/order")
-    public String order(Model model, Principal principal) {
-
-        Order order = new Order();
-        order.setUser(userService.findByUserName(principal.getName()));
-        order.setProductList(shoppingCartService.getShoppingCart().getProductList());
-        model.addAttribute("orderForm", new Order());
-
-        return "order_adress";
-    }
-
-    @RequestMapping(value = "/order", method = RequestMethod.POST)
-    public String orderPost(Model model, @ModelAttribute("orderForm") Order orderForm, BindingResult bindingResult) {
-
-        Order order = orderForm;
-        orderValidator.validate(orderForm, bindingResult);
-
-        if (bindingResult.hasErrors()) {
-            return "order_adress";
-        }
-        orderService.addOrder(order);
-        return "order_summary";
-    }
 
 
 }
