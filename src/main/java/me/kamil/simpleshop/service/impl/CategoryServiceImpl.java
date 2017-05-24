@@ -1,6 +1,7 @@
 package me.kamil.simpleshop.service.impl;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import me.kamil.simpleshop.service.CategoryService;
 import me.kamil.simpleshop.service.ProductService;
@@ -32,9 +33,6 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public void addCategory(Category category) {
-        if (category == null)
-            return;
-
         categoryRepository.save(category);
     }
 
@@ -48,4 +46,18 @@ public class CategoryServiceImpl implements CategoryService {
         return productService.getProductsByCategoryAsc(category);
     }
 
+    @Override
+    public List<Category> getAllActiveCategories() {
+        List<Category> results = getAllCategories().stream()
+                .filter(category -> category.isActive())
+                .collect(Collectors.toList());
+
+        return results;
+    }
+
+    @Override
+    public void setActive(Category category) {
+        category.setActive(!category.isActive());
+        categoryRepository.save(category);
+    }
 }
