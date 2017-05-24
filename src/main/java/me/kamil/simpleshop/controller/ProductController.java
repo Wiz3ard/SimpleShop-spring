@@ -28,17 +28,6 @@ public class ProductController {
     @Autowired
     ProductService productService;
 
-    @Autowired
-    ShoppingCartService shoppingCartService;
-
-    @Autowired
-    UserService userService;
-
-    @Autowired
-    OrderValidator orderValidator;
-
-    @Autowired
-    OrderService orderService;
 
     @RequestMapping(value = "/product/{pid}")
     public String productDetails(@PathVariable("pid") Integer pid, Model model) {
@@ -51,37 +40,7 @@ public class ProductController {
         return "product_detail";
     }
 
-    @RequestMapping(value = "/addToCart")
-    public String addToCart(@ModelAttribute(value = "amountValue") Integer amount, @ModelAttribute("pid") Integer pid, HttpServletRequest request) {
 
-        CartProduct cartProduct = new CartProduct();
-        Product product = productService.findById(pid.longValue());
-
-        if (pid == null) return "redirect:/home";
-        if (product == null) return "redirect:/home";
-
-        if (amount == null)
-            cartProduct.setAmount(1);
-        else
-            cartProduct.setAmount(amount);
-
-        if (product.getAmount() < cartProduct.getAmount()) {
-            return "redirect:" + request.getHeader("Referer");
-        }
-        cartProduct.setProduct(product);
-        shoppingCartService.addToCart(cartProduct);
-
-        return "redirect:/home";
-    }
-
-    @RequestMapping(value = "/cart")
-    public String shoppingCart(Model model) {
-
-        ShoppingCart shoppingCart = shoppingCartService.getShoppingCart();
-        model.addAttribute("cart", shoppingCart);
-        return "cart";
-
-    }
 
 
 
