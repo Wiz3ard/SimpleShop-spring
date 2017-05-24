@@ -16,4 +16,9 @@ public interface CategoryService {
     List<Category> getAllCategories();
 
     List<Product> getAllProducts(Category category);
+
+    List<Category> getAllActiveCategories();
+
+    void setActive(Category category);
+
 }

@@ -31,6 +31,12 @@ public class GlobalControllerAdvice {
         return categoryService.getAllCategories();
     }
 
+    @ModelAttribute("activeCategories")
+
+    public List<Category> activeCategoriesList() {
+        return categoryService.getAllActiveCategories();
+    }
+
     @ModelAttribute("products")
     public List<Product> productList() {
         return productService.getAllProducts(new Sort(Sort.Direction.ASC, "id"));

@@ -91,4 +91,9 @@ public class OrderServiceImpl implements OrderService {
     public List<Order> getOrderByStatus(String status) {
         return orderRepository.findByStatus(status);
     }
+
+    @Override
+    public List<Order> getAllOrders() {
+        return orderRepository.findAll();
+    }
 }

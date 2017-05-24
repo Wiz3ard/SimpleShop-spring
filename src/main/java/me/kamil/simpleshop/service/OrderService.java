@@ -24,4 +24,5 @@ public interface OrderService {
 
     List<Order> getOrderByStatus(String status);
 
+    List<Order> getAllOrders();
 }

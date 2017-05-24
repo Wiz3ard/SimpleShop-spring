@@ -18,21 +18,27 @@
             </ul>
             <div class="row" style="padding:20px;">
 
-                <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
                     <label>ID:</label>
                 </div>
                 <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
                     <label> NAME: </label>
                 </div>
+                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                    <label>ACTIVE: </label>
+                </div>
             </div>
             <div class="row" th:each="c : ${categories}" style="margin-left:5px">
-                <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" th:text="${c.getId()}">
+                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" th:text="${c.getId()}">
                 </div>
-                <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" th:text="${c.getName()}">
+                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" th:text="${c.getName()}">
                 </div>
-                <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" th:text="${c.isActive()}">
+                </div>
+
+                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
                     <a th:href="@{'/admin/category/edit/'+${c.getId()}}">EDIT</a>
-                    <a th:href="#">Delete</a>
+                    <a th:href="@{'/admin/category/active/'+${c.getId()}}">Set Active</a>
                 </div>
             </div>
         </div>
