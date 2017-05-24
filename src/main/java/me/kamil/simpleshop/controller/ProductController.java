@@ -1,14 +1,14 @@
 package me.kamil.simpleshop.controller;
 
 import me.kamil.simpleshop.auth.service.UserService;
-import me.kamil.simpleshop.domain.CartProduct;
-import me.kamil.simpleshop.domain.Order;
-import me.kamil.simpleshop.domain.Product;
 import me.kamil.simpleshop.domain.ShoppingCart;
-import me.kamil.simpleshop.service.OrderService;
 import me.kamil.simpleshop.service.ProductService;
 import me.kamil.simpleshop.service.ShoppingCartService;
 import me.kamil.simpleshop.service.impl.OrderValidator;
+import me.kamil.simpleshop.domain.CartProduct;
+import me.kamil.simpleshop.domain.Order;
+import me.kamil.simpleshop.domain.Product;
+import me.kamil.simpleshop.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,15 +30,6 @@ public class ProductController {
 
     @Autowired
     ShoppingCartService shoppingCartService;
-
-    @Autowired
-    UserService userService;
-
-    @Autowired
-    OrderValidator orderValidator;
-
-    @Autowired
-    OrderService orderService;
 
     @RequestMapping(value = "/product/{pid}")
     public String productDetails(@PathVariable("pid") Integer pid, Model model) {
@@ -83,29 +74,6 @@ public class ProductController {
 
     }
 
-    @RequestMapping(value = "/order")
-    public String order(Model model, Principal principal) {
-
-        Order order = new Order();
-        order.setUser(userService.findByUserName(principal.getName()));
-        order.setProductList(shoppingCartService.getShoppingCart().getProductList());
-        model.addAttribute("orderForm", new Order());
-
-        return "order_adress";
-    }
-
-    @RequestMapping(value = "/order", method = RequestMethod.POST)
-    public String orderPost(Model model, @ModelAttribute("orderForm") Order orderForm, BindingResult bindingResult) {
-
-        Order order = orderForm;
-        orderValidator.validate(orderForm, bindingResult);
-
-        if (bindingResult.hasErrors()) {
-            return "order_adress";
-        }
-        orderService.addOrder(order);
-        return "order_summary";
-    }
 
 
 }
