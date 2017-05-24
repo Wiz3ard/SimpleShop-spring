@@ -1,10 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+
 </head>
 <body>
+<div class="container">
+    <div th:include="share/header :: header"> ...</div>
+    <div class="row">
+        <div th:include="share/category_menu :: c_menu"></div>
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 ">
+            <div class="row">
+                <div class="row">
+                    Your order must be accepted by administrator.<br/>
+                    You will recive information about payment on your email.
+                </div>
 
+            </div>
+
+        </div>
+    </div>
+</div>
 </body>
 </html>
